@@ -1,0 +1,9 @@
+name: shellcheck
+on: [push, pull_request]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run shellcheck
+        run: shellcheck --severity=warning $(git ls-files '*.sh')
